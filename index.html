@@ -23,20 +23,65 @@
             <div class="search-box">
                 <select id="searchOption">
                     <option value="movie">movie title</option>
-                    <option value="title&year">movie title or year</option>
-                    <option value="name">Movie Name</option>
+                    <option value="movie&year">movie title or year</option>
+                    <option value="person">person</option>
                 </select> <br>
                 <label for="txtMovie">Search for movies</label><br>
                 <input id="searchValue" type="text" name="txtMovie" placeholder="søg...">
                 <button id="btn-search" name="search"type="button"><i class="fa fa-search"></i></button>
             </div>
         </form>
-        <div class="movieContainer">
+        <div class="resultContainer">
         </div>
-        <div class="modal" id="modal">
+        <div class="personModal">
             <div class="modalContent" id="modalContent">
-                Title: <span id="title1">hej</span>
-                <button class="close" id="close">Close</button>
+                Name: <span id="modalName"></span><br>
+                Main Activity: <span id="modalMainActivity"></span><br>
+                Birthday: <span id="modalBirthday"></span><br>
+                Place of birth: <span id="modalBirthPlace"></span><br>
+                <span id="modalDeceased"></span><br>
+                Biography: <span id="modalBio"></span><br>
+                Website: <span id="modalWebsite"></span><br>
+                <div class="list">
+                    <br><span>Has been a part of the following Movies</span>
+                    <ul id="movie-info">
+                    </ul>
+                    <button class="close" id="closePerson">Close</button>
+                </div>
+            </div>
+        </div>
+        <div class="movieModal" id="movieModal">
+            <div class="modalContent" id="modalContent">
+                Title: <span id="modalTitle"></span><br>
+                Release Date <span id="modalRelease-date"></span><br>
+                Language <span id="modalLanguage"></span><br>
+                Runtime <span id="modalRuntime"></span><br>
+                Overview <p id="modalOverview"></p><br>
+                Movie link <span id="link"></span><br>
+                <div class="list">
+                    Genres <ul id="modalGenres">
+                
+                    </ul>
+                    Actors <ul id="modalActors">
+                            
+                    </ul>
+                    Directors <ul id="modalDirectors">
+
+                    </ul>    
+                    Script Writers <ul id="modalScriptWriters">
+
+                    </ul>   
+                    Executive Producers <ul id="modalExecutives">
+
+                    </ul>  
+                    Producers <ul id="modalProducers">
+
+                    </ul>   
+                    Composers <ul id="modalComposers">
+
+                    </ul>   
+                    <button class="close" id="closeMovie">Close</button>
+                </div>
             </div>
         </div>
     </main>
