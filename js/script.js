@@ -8,12 +8,18 @@ $(document).ready(function() {
     $('.movieContainer').hide();
     $(".modal").hide();
     $("#btn-search").click(function() { 
-        let searchVal = $('#searchOption').val();
-        if ($('#searchValueYear').is(":empty") && searchVal === 'movie'){
+
+        let searchOpt = $('#searchOption').val();
+        let searchYear = $("#searchValueYear").val();
+
+        if (searchYear !=='' && searchOpt === 'movie') {
+            console.log("counting year");
             movieYearSearch();
-        } else if(searchVal == 'movie'){
+        } else if (searchOpt === 'movie') {
+            console.log("Counting without year")
             movieSearch();
-        } else if (searchVal == 'person') {
+        } else if (searchOpt === 'person') {
+            console.log("here")
             personSearch();
         }
     });
@@ -27,19 +33,18 @@ function movieYearSearch(){
         url: URL,
         type: "GET"
     }).done(function(data){
-    
-    data.results.forEach(element => {
-        if (element.release_date === searchYear) {
-            movieRelease += '<div class="movie result-info-box">'
-            movieRelease += '<span hidden id="id">' + element.id + '</span>'
-            movieRelease += 'Title: <span id="title">' + element.title + '</span>' + '<br>';
-            movieRelease += 'Release Date: <span id="release-date">' + element.release_date + '</span>' + '<br>';
-            movieRelease += '</div>'
-        }
-    });
-    $('.resultContainer').html(movieRelease);
-    $('.resultContainer').show();
-    showMovieModal();
+        data.results.forEach(element => {
+            if (element.release_date === searchYear) {
+                movieRelease += '<div class="movie result-info-box">'
+                movieRelease += '<span hidden id="id">' + element.id + '</span>'
+                movieRelease += 'Title: <span id="title">' + element.title + '</span>' + '<br>';
+                movieRelease += 'Release Date: <span id="release-date">' + element.release_date + '</span>' + '<br>';
+                movieRelease += '</div>'
+            }
+        });
+        $('.resultContainer').html(movieRelease);
+        $('.resultContainer').show();
+        showMovieModal();
     });
 }
 
