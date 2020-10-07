@@ -8,18 +8,13 @@ $(document).ready(function() {
     $('.movieContainer').hide();
     $(".modal").hide();
     $("#btn-search").click(function() { 
-
         let searchOpt = $('#searchOption').val();
         let searchYear = $("#searchValueYear").val();
-
-        if (searchYear !=='' && searchOpt === 'movie') {
-            console.log("counting year");
+        if (searchYear !=='' && searchOpt == 'movie&year') {
             movieYearSearch();
-        } else if (searchOpt === 'movie') {
-            console.log("Counting without year")
+        } else if (searchYear == '' && searchOpt == 'movie') {
             movieSearch();
-        } else if (searchOpt === 'person') {
-            console.log("here")
+        } else if (searchYear == '' && searchOpt == 'person') {
             personSearch();
         }
     });
