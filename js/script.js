@@ -9,13 +9,39 @@ $(document).ready(function() {
     $(".modal").hide();
     $("#btn-search").click(function() { 
         let searchVal = $('#searchOption').val();
-        if(searchVal == 'movie'){
+        if ($('#searchValueYear').is(":empty") && searchVal === 'movie'){
+            movieYearSearch();
+        } else if(searchVal == 'movie'){
             movieSearch();
         } else if (searchVal == 'person') {
             personSearch();
         }
     });
 });
+
+function movieYearSearch(){
+    let searchYear = $("#searchValueYear").val();
+    let URL = 'https://api.themoviedb.org/3/search/' + $('#searchOption').val() + '?api_key=' + movieAPIKey + '&language=en-US&page=1&include_adult=false&query=' + $('#searchValue').val();
+    var movieRelease = '';
+    $.ajax({
+        url: URL,
+        type: "GET"
+    }).done(function(data){
+    
+    data.results.forEach(element => {
+        if (element.release_date === searchYear) {
+            movieRelease += '<div class="movie result-info-box">'
+            movieRelease += '<span hidden id="id">' + element.id + '</span>'
+            movieRelease += 'Title: <span id="title">' + element.title + '</span>' + '<br>';
+            movieRelease += 'Release Date: <span id="release-date">' + element.release_date + '</span>' + '<br>';
+            movieRelease += '</div>'
+        }
+    });
+    $('.resultContainer').html(movieRelease);
+    $('.resultContainer').show();
+    showMovieModal();
+    });
+}
 
 function personSearch() {
     let URL = 'https://api.themoviedb.org/3/search/' + $('#searchOption').val() + '?api_key=' + movieAPIKey + '&language=en-US&page=1&include_adult=false&query=' + $('#searchValue').val();

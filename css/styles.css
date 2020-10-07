@@ -46,16 +46,17 @@ main {
 
 .search-form input{
     padding: 5px;
-    margin-bottom: 10px;
+    
 }
 
 .search-form button {
-    padding: 5px;
+    padding: 5px 15px;
     background-color: #C96E53;
     border: none;
     cursor: pointer;
     padding: 7px;
     border-radius: 2px;
+    margin-bottom: 10px;
 }
 
 .resultContainer {
