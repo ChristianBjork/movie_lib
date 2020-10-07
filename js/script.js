@@ -114,6 +114,7 @@ function showMovieModal(){
             $('#modalLanguage').html(data.original_language);
             $('#modalRuntime').html(data.runtime + " minutes");
             $('#modalOverview').html(data.overview);
+            $('#modalLink').html(data.link);
             let genres ='';
             data.genres.forEach(element => {
                 genres += '<li>' + element.name + '</li>'
@@ -181,8 +182,8 @@ function showMovieModal(){
                     composers += '<li>' + element.name + '</li>'
                 }
             });
-            if(producers == '') {
-                producers += "No producers were assigned for this movie";
+            if(composers == '') {
+                composers += "No composers were assigned for this movie";
             }
             $('#modalComposers').html(composers);
 
